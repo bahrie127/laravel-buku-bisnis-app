@@ -46,6 +46,7 @@ class CategoryFactory extends Factory
         $categories = $type === 'income' ? $incomeCategories : $expenseCategories;
 
         return [
+            'user_id' => \App\Models\User::factory(),
             'name' => fake()->randomElement($categories),
             'type' => $type,
             'parent_id' => null, // Will be set manually for nested categories

@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->index(['user_id', 'type']);
             $table->index(['parent_id']);
+            $table->unique(['user_id', 'name', 'type'], 'categories_user_name_type_unique');
         });
     }
 

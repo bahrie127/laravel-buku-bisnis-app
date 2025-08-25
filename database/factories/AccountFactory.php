@@ -17,6 +17,7 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::factory(),
             'name' => fake()->randomElement([
                 'Cash Wallet',
                 'BCA Checking',

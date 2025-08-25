@@ -17,7 +17,12 @@ class AttachmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'transaction_id' => \App\Models\Transaction::factory(),
+            'filename' => fake()->word() . '.' . fake()->randomElement(['jpg', 'png', 'pdf', 'jpeg']),
+            'original_name' => fake()->sentence(2) . '.' . fake()->randomElement(['jpg', 'png', 'pdf', 'jpeg']),
+            'path' => 'attachments/' . fake()->uuid() . '.' . fake()->randomElement(['jpg', 'png', 'pdf', 'jpeg']),
+            'size' => fake()->numberBetween(1024, 5242880), // 1KB to 5MB
+            'mime_type' => fake()->randomElement(['image/jpeg', 'image/png', 'application/pdf']),
         ];
     }
 }
