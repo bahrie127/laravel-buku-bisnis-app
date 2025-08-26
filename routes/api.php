@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Category routes
     Route::apiResource('categories', CategoryController::class);
+
+    // Transaction routes
+    Route::apiResource('transactions', TransactionController::class);
+
+    // Additional transaction endpoints
+    Route::post('/transactions/transfer', [TransactionController::class, 'createTransfer']);
+    Route::get('/transactions-statistics', [TransactionController::class, 'statistics']);
 });

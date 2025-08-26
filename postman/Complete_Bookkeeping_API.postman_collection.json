@@ -1,0 +1,888 @@
+{
+	"info": {
+		"_postman_id": "complete-bookkeeping-api",
+		"name": "Complete Laravel Bookkeeping API",
+		"description": "Complete API collection including Authentication, Accounts, Categories, and Transactions with all CRUD operations, filtering, transfer, and statistics.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sample_account_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sample_category_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sample_transaction_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "🔐 Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('access_token', response.token);",
+									"    console.log('Token saved:', response.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/me",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "me"]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "logout"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🏦 Accounts",
+			"item": [
+				{
+					"name": "Get All Accounts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/accounts",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts"],
+							"query": [
+								{
+									"key": "type",
+									"value": "",
+									"description": "Filter by type: checking, savings, credit_card, cash, investment",
+									"disabled": true
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Checking Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('sample_account_id', response.data.id);",
+									"    console.log('Account ID saved:', response.data.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Main Checking Account\",\n    \"type\": \"checking\",\n    \"initial_balance\": 1000.00,\n    \"description\": \"Primary checking account for daily expenses\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/accounts",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts"]
+						}
+					}
+				},
+				{
+					"name": "Create Savings Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Emergency Fund\",\n    \"type\": \"savings\",\n    \"initial_balance\": 5000.00,\n    \"description\": \"Emergency savings account\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/accounts",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts"]
+						}
+					}
+				},
+				{
+					"name": "Get Account by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/accounts/{{sample_account_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts", "{{sample_account_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Account Name\",\n    \"description\": \"Updated account description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/accounts/{{sample_account_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts", "{{sample_account_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/accounts/{{sample_account_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "accounts", "{{sample_account_id}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📂 Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"],
+							"query": [
+								{
+									"key": "type",
+									"value": "",
+									"description": "Filter by type: income, expense",
+									"disabled": true
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Expense Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('sample_category_id', response.data.id);",
+									"    console.log('Category ID saved:', response.data.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Food & Dining\",\n    \"type\": \"expense\",\n    \"parent_id\": null\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Create Income Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('income_category_id', response.data.id);",
+									"    console.log('Income Category ID saved:', response.data.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Salary\",\n    \"type\": \"income\",\n    \"parent_id\": null\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Create Subcategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Restaurant\",\n    \"type\": \"expense\",\n    \"parent_id\": {{sample_category_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/categories/{{sample_category_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", "{{sample_category_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Food & Beverages\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories/{{sample_category_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", "{{sample_category_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/categories/{{sample_category_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", "{{sample_category_id}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "💰 Transactions",
+			"item": [
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions?per_page=15&sort_by=date&sort_order=desc",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15",
+									"description": "Number of items per page (max 100)"
+								},
+								{
+									"key": "sort_by",
+									"value": "date",
+									"description": "Sort by: date, amount, created_at"
+								},
+								{
+									"key": "sort_order",
+									"value": "desc",
+									"description": "Sort order: asc, desc"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Filtered Transactions - This Month",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions?from_date=2025-08-01&to_date=2025-08-31&sort_by=date&sort_order=desc&per_page=20",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2025-08-01"
+								},
+								{
+									"key": "to_date",
+									"value": "2025-08-31"
+								},
+								{
+									"key": "sort_by",
+									"value": "date"
+								},
+								{
+									"key": "sort_order",
+									"value": "desc"
+								},
+								{
+									"key": "per_page",
+									"value": "20"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Expenses Only",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions?type=expense&per_page=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"],
+							"query": [
+								{
+									"key": "type",
+									"value": "expense"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Search Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions?q=restaurant&min_amount=10&max_amount=100",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"],
+							"query": [
+								{
+									"key": "q",
+									"value": "restaurant",
+									"description": "Search in note or counterparty"
+								},
+								{
+									"key": "min_amount",
+									"value": "10"
+								},
+								{
+									"key": "max_amount",
+									"value": "100"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Expense Transaction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('sample_transaction_id', response.data.id);",
+									"    console.log('Transaction ID saved:', response.data.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": {{sample_account_id}},\n    \"category_id\": {{sample_category_id}},\n    \"type\": \"expense\",\n    \"date\": \"2025-08-26\",\n    \"amount\": 35.50,\n    \"note\": \"Lunch at restaurant\",\n    \"counterparty\": \"Pizza Palace\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transactions",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"]
+						}
+					}
+				},
+				{
+					"name": "Create Income Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": {{sample_account_id}},\n    \"category_id\": {{income_category_id}},\n    \"type\": \"income\",\n    \"date\": \"2025-08-26\",\n    \"amount\": 2500.00,\n    \"note\": \"Monthly salary\",\n    \"counterparty\": \"Company ABC\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transactions",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions"]
+						}
+					}
+				},
+				{
+					"name": "Get Transaction by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions/{{sample_transaction_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions", "{{sample_transaction_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 40.00,\n    \"note\": \"Updated: Lunch at restaurant with tip\",\n    \"counterparty\": \"Pizza Palace Downtown\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transactions/{{sample_transaction_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions", "{{sample_transaction_id}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions/{{sample_transaction_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions", "{{sample_transaction_id}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🔄 Transfers",
+			"item": [
+				{
+					"name": "Create Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"from_account_id\": {{sample_account_id}},\n    \"to_account_id\": 2,\n    \"amount\": 500.00,\n    \"date\": \"2025-08-26\",\n    \"note\": \"Transfer to savings account\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transactions/transfer",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions", "transfer"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📊 Statistics",
+			"item": [
+				{
+					"name": "Get All Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions-statistics",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions-statistics"]
+						}
+					}
+				},
+				{
+					"name": "Get Monthly Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions-statistics?from_date=2025-08-01&to_date=2025-08-31",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions-statistics"],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2025-08-01",
+									"description": "Start of month"
+								},
+								{
+									"key": "to_date",
+									"value": "2025-08-31",
+									"description": "End of month"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Statistics by Account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions-statistics?account_id={{sample_account_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions-statistics"],
+							"query": [
+								{
+									"key": "account_id",
+									"value": "{{sample_account_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Statistics by Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/transactions-statistics?category_id={{sample_category_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transactions-statistics"],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "{{sample_category_id}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
