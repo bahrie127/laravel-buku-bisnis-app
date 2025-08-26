@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#8B4513"/>
+
+  <!-- Coffee cup -->
+  <g transform="translate(6, 8)">
+    <!-- Cup body -->
+    <path d="M2 4 L2 16 Q2 18 4 18 L14 18 Q16 18 16 16 L16 4 Z" fill="#3E2723"/>
+    <!-- Coffee surface -->
+    <ellipse cx="9" cy="5" rx="7" ry="1" fill="#5D4037"/>
+    <!-- Handle -->
+    <path d="M16 8 Q19 8 19 11 Q19 14 16 14" fill="none" stroke="#3E2723" stroke-width="1.5"/>
+    <!-- Steam -->
+    <path d="M7 2 Q7 1 8 1 Q8 2 8 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M9 2 Q9 1 10 1 Q10 2 10 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M11 2 Q11 1 12 1 Q12 2 12 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+  </g>
+</svg>

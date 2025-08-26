@@ -275,8 +275,8 @@ describe('Transaction API', function () {
                     'expense_count',
                 ],
             ])
-            ->assertJsonPath('data.total_income', 1000)
-            ->assertJsonPath('data.total_expense', 300)
-            ->assertJsonPath('data.net_amount', 700);
+            ->assertJsonPath('data.total_income', '1000.00')
+            ->assertJsonPath('data.total_expense', '300.00')
+            ->assertJsonPath('data.net_amount', '700.00');
     });
 });

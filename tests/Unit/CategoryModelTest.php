@@ -74,11 +74,13 @@ describe('Category Model Unit Tests', function () {
 
         $parent = Category::factory()->create([
             'user_id' => $user->id,
+            'name' => 'Parent Income Category',
             'type' => 'income'
         ]);
 
         $child = Category::factory()->create([
             'user_id' => $user->id,
+            'name' => 'Child Income Category',
             'type' => 'income',
             'parent_id' => $parent->id
         ]);

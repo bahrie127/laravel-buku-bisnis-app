@@ -15,34 +15,38 @@ class CategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Category Name')
+                    ->label('Nama Kategori')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('type')
-                    ->label('Type')
+                    ->label('Tipe')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'income' => 'success',
                         'expense' => 'danger',
                     })
-                    ->formatStateUsing(fn(string $state): string => ucfirst($state))
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'income' => 'Pemasukan',
+                        'expense' => 'Pengeluaran',
+                        default => ucfirst($state)
+                    })
                     ->sortable(),
 
                 TextColumn::make('parent.name')
-                    ->label('Parent Category')
+                    ->label('Kategori Induk')
                     ->placeholder('—')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('updated_at')
-                    ->label('Updated')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -18,31 +18,61 @@ class ListTransactions extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
+            CreateAction::make(),
             Action::make('downloadReport')
-                ->label('Download Report')
+                ->label('Unduh Laporan')
                 ->icon(Heroicon::DocumentArrowDown)
                 ->color('success')
+                ->form([
+                    \Filament\Forms\Components\DatePicker::make('date_from')
+                        ->label('Dari Tanggal'),
+                    \Filament\Forms\Components\DatePicker::make('date_to')
+                        ->label('Sampai Tanggal'),
+                ])
                 ->action('downloadPdfReport'),
-            CreateAction::make(),
         ];
     }
 
-    public function downloadPdfReport(): \Symfony\Component\HttpFoundation\Response
+    public function downloadPdfReport(array $data): \Symfony\Component\HttpFoundation\Response
     {
-        // Get all transactions for current user
-        $transactions = Transaction::where('user_id', Auth::id())
+        // Get date filters from action form
+        $dateFrom = $data['date_from'] ?? null;
+        $dateTo = $data['date_to'] ?? null;
+
+        // Get all transactions for current user with date filters
+        $query = Transaction::where('user_id', Auth::id())
             ->with(['account', 'category'])
-            ->orderBy('date', 'desc')
-            ->get();
+            ->orderBy('date', 'desc');
+
+        // Apply date filters if they exist
+        if ($dateFrom) {
+            $query->whereDate('date', '>=', $dateFrom);
+        }
+        if ($dateTo) {
+            $query->whereDate('date', '<=', $dateTo);
+        }
+
+        $transactions = $query->get();
 
         // Calculate summary data
         $totalIncome = $transactions->where('type', 'income')->sum('amount');
         $totalExpenses = abs($transactions->where('type', 'expense')->sum('amount'));
         $netBalance = $totalIncome - $totalExpenses;
 
-        // Get date range
-        $startDate = $transactions->min('date')?->format('M d, Y') ?? 'No transactions';
-        $endDate = $transactions->max('date')?->format('M d, Y') ?? 'No transactions';
+        // Get date range for display
+        if ($dateFrom && $dateTo) {
+            $startDate = \Carbon\Carbon::parse($dateFrom)->format('d M Y');
+            $endDate = \Carbon\Carbon::parse($dateTo)->format('d M Y');
+        } elseif ($dateFrom) {
+            $startDate = \Carbon\Carbon::parse($dateFrom)->format('d M Y');
+            $endDate = $transactions->max('date')?->format('d M Y') ?? 'Hari ini';
+        } elseif ($dateTo) {
+            $startDate = $transactions->min('date')?->format('d M Y') ?? 'Awal';
+            $endDate = \Carbon\Carbon::parse($dateTo)->format('d M Y');
+        } else {
+            $startDate = $transactions->min('date')?->format('d M Y') ?? 'Tidak ada transaksi';
+            $endDate = $transactions->max('date')?->format('d M Y') ?? 'Tidak ada transaksi';
+        }
 
         // Generate PDF
         $pdf = Pdf::loadView('reports.transactions-pdf', [
@@ -54,10 +84,10 @@ class ListTransactions extends ListRecords
             'endDate' => $endDate,
         ]);
 
-        $filename = 'transactions-report-' . now()->format('Y-m-d') . '.pdf';
+        $filename = 'transactions-report-'.now()->format('Y-m-d').'.pdf';
 
         return response()->streamDownload(
-            fn() => print($pdf->output()),
+            fn () => print ($pdf->output()),
             $filename,
             ['Content-Type' => 'application/pdf']
         );

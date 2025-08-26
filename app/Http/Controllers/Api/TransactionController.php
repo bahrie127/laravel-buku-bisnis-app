@@ -146,7 +146,7 @@ class TransactionController extends Controller
         $transaction->load([
             'account:id,name,type',
             'category:id,name,type',
-            'attachments:id,transaction_id,filename,file_path,file_size',
+            'attachments:id,transaction_id,original_name,path,size',
         ]);
 
         // Include transfer partner if this is a transfer transaction
@@ -368,15 +368,18 @@ class TransactionController extends Controller
             $query->where('category_id', $request->category_id);
         }
 
+        $totalIncome = (float) (clone $query)->where('type', 'income')->sum('amount');
+        $totalExpense = (float) (clone $query)->where('type', 'expense')->sum('amount');
+
         $statistics = [
-            'total_income' => (clone $query)->where('type', 'income')->sum('amount'),
-            'total_expense' => (clone $query)->where('type', 'expense')->sum('amount'),
+            'total_income' => number_format($totalIncome, 2, '.', ''),
+            'total_expense' => number_format($totalExpense, 2, '.', ''),
             'transaction_count' => $query->count(),
             'income_count' => (clone $query)->where('type', 'income')->count(),
             'expense_count' => (clone $query)->where('type', 'expense')->count(),
         ];
 
-        $statistics['net_amount'] = $statistics['total_income'] - $statistics['total_expense'];
+        $statistics['net_amount'] = number_format($totalIncome - $totalExpense, 2, '.', '');
 
         return response()->json([
             'message' => 'Transaction statistics retrieved successfully',

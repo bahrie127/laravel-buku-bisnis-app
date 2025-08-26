@@ -1,0 +1,31 @@
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Coffee Cup Icon -->
+  <g transform="translate(5, 8)">
+    <!-- Cup -->
+    <path d="M2 4 L2 20 Q2 22 4 22 L14 22 Q16 22 16 20 L16 4 Z" fill="#8B4513" stroke="#654321" stroke-width="0.8"/>
+    <!-- Coffee -->
+    <rect x="3.5" y="5.5" width="11" height="14" rx="1" fill="#3E2723"/>
+    <!-- Handle -->
+    <path d="M16 9 Q19 9 19 12 Q19 15 16 15" fill="none" stroke="#8B4513" stroke-width="1.5"/>
+    <!-- Steam -->
+    <path d="M6 2 Q6 1 7 1 Q7 2 7 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M9 2 Q9 1 10 1 Q10 2 10 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M12 2 Q12 1 13 1 Q13 2 13 1" fill="none" stroke="#F59E0B" stroke-width="1"/>
+  </g>
+
+  <!-- App Name -->
+  <g transform="translate(30, 8)">
+    <!-- Main Title -->
+    <text x="0" y="12" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1F2937">Finansial</text>
+    <text x="60" y="12" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#8B4513">Kopi</text>
+    <text x="87" y="12" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#3B82F6">Flutter</text>
+    <!-- Subtitle -->
+    <text x="0" y="26" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">Sistem Manajemen Keuangan Bisnis Kopi</text>
+  </g>
+
+  <!-- Currency Accent -->
+  <g transform="translate(140, 12)">
+    <circle cx="8" cy="8" r="6" fill="#F59E0B"/>
+    <text x="8" y="11" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">₽</text>
+  </g>
+</svg>

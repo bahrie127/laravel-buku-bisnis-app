@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Buku Bisnis'),
+    'name' => env('APP_NAME', 'Finansial Kopi Flutter'),
 
     /*
     |--------------------------------------------------------------------------

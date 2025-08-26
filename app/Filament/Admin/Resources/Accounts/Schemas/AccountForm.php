@@ -2,11 +2,11 @@
 
 namespace App\Filament\Admin\Resources\Accounts\Schemas;
 
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 
@@ -16,25 +16,25 @@ class AccountForm
     {
         return $schema
             ->components([
-                Section::make('Account Information')
-                    ->description('Manage your financial accounts')
+                Section::make('Informasi Akun')
+                    ->description('Kelola akun keuangan Anda')
                     ->icon(Heroicon::CreditCard)
                     ->schema([
                         Grid::make(2)
                             ->schema([
                                 TextInput::make('name')
-                                    ->label('Account Name')
+                                    ->label('Nama Akun')
                                     ->required()
                                     ->maxLength(255)
-                                    ->placeholder('e.g., BCA Checking, Cash Wallet'),
+                                    ->placeholder('contoh: BCA Tabungan, Dompet Tunai'),
 
                                 Select::make('type')
-                                    ->label('Account Type')
+                                    ->label('Tipe Akun')
                                     ->options([
-                                        'cash' => 'Cash',
+                                        'cash' => 'Tunai',
                                         'bank' => 'Bank',
                                         'ewallet' => 'E-Wallet',
-                                        'other' => 'Other',
+                                        'other' => 'Lainnya',
                                     ])
                                     ->default('cash')
                                     ->required()
@@ -44,7 +44,7 @@ class AccountForm
                         Grid::make(2)
                             ->schema([
                                 TextInput::make('starting_balance')
-                                    ->label('Starting Balance')
+                                    ->label('Saldo Awal')
                                     ->prefix('Rp')
                                     ->default(0)
                                     ->required()
@@ -67,10 +67,10 @@ class AccountForm
                                     ->formatStateUsing(function ($state) {
                                         return $state ? number_format($state, 0, ',', '.') : '';
                                     })
-                                    ->placeholder('e.g., 1.000.000'),
+                                    ->placeholder('contoh: 1.000.000'),
 
                                 Toggle::make('is_active')
-                                    ->label('Active')
+                                    ->label('Aktif')
                                     ->default(true)
                                     ->required(),
                             ]),

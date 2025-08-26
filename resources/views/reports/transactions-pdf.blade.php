@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction Report</title>
+    <title>Laporan Transaksi - Finansial Kopi Flutter</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -130,26 +130,26 @@
 
 <body>
     <div class="header">
-        <h1>Transaction Report</h1>
-        <p>Generated on {{ now()->format('F d, Y \a\t H:i:s') }}</p>
-        <p>Period: {{ $startDate }} - {{ $endDate }}</p>
+        <h1>Laporan Transaksi</h1>
+        <p>Dibuat pada {{ now()->format('d F Y \p\u\k\u\l H:i:s') }}</p>
+        <p>Periode: {{ $startDate }} - {{ $endDate }}</p>
     </div>
 
     <div class="summary">
         <div class="summary-item">
-            <h3>Total Income</h3>
-            <p class="income">${{ number_format($totalIncome, 2) }}</p>
+            <h3>Total Pemasukan</h3>
+            <p class="income">Rp {{ number_format($totalIncome, 0, ',', '.') }}</p>
         </div>
         <div class="summary-item">
-            <h3>Total Expenses</h3>
-            <p class="expense">${{ number_format($totalExpenses, 2) }}</p>
+            <h3>Total Pengeluaran</h3>
+            <p class="expense">Rp {{ number_format($totalExpenses, 0, ',', '.') }}</p>
         </div>
         <div class="summary-item">
-            <h3>Net Balance</h3>
-            <p class="total">${{ number_format($netBalance, 2) }}</p>
+            <h3>Saldo Bersih</h3>
+            <p class="total">Rp {{ number_format($netBalance, 0, ',', '.') }}</p>
         </div>
         <div class="summary-item">
-            <h3>Total Transactions</h3>
+            <h3>Total Transaksi</h3>
             <p class="total">{{ $transactions->count() }}</p>
         </div>
     </div>
@@ -158,28 +158,28 @@
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Account</th>
-                    <th>Category</th>
-                    <th>Type</th>
-                    <th>Amount</th>
+                    <th>Tanggal</th>
+                    <th>Deskripsi</th>
+                    <th>Akun</th>
+                    <th>Kategori</th>
+                    <th>Tipe</th>
+                    <th>Jumlah</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($transactions as $transaction)
                     <tr>
-                        <td class="date">{{ $transaction->date->format('M d, Y') }}</td>
-                        <td>{{ $transaction->description }}</td>
+                        <td class="date">{{ $transaction->date->format('d M Y') }}</td>
+                        <td>{{ $transaction->note ?? '-' }}</td>
                         <td>{{ $transaction->account->name }}</td>
-                        <td>{{ $transaction->category->name ?? 'Uncategorized' }}</td>
+                        <td>{{ $transaction->category->name ?? 'Tidak Dikategorikan' }}</td>
                         <td>
                             <span class="{{ $transaction->type === 'income' ? 'income' : 'expense' }}">
-                                {{ ucfirst($transaction->type) }}
+                                {{ $transaction->type === 'income' ? 'Pemasukan' : 'Pengeluaran' }}
                             </span>
                         </td>
                         <td class="amount {{ $transaction->amount >= 0 ? 'positive' : 'negative' }}">
-                            ${{ number_format(abs($transaction->amount), 2) }}
+                            Rp {{ number_format(abs($transaction->amount), 0, ',', '.') }}
                         </td>
                     </tr>
                 @endforeach
@@ -187,12 +187,12 @@
         </table>
     @else
         <div class="no-data">
-            <p>No transactions found for the selected period.</p>
+            <p>Tidak ada transaksi ditemukan untuk periode yang dipilih.</p>
         </div>
     @endif
 
     <div class="footer">
-        <p>This report was generated automatically by {{ config('app.name') }}</p>
+        <p>Laporan ini dibuat secara otomatis oleh {{ config('app.name') }}</p>
     </div>
 </body>
 

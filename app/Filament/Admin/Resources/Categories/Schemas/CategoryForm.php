@@ -15,28 +15,28 @@ class CategoryForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Category Name')
+                    ->label('Nama Kategori')
                     ->required()
                     ->maxLength(255)
-                    ->placeholder('e.g., Food & Dining, Transportation'),
+                    ->placeholder('contoh: Makanan & Minuman, Transportasi'),
 
                 Select::make('type')
-                    ->label('Category Type')
+                    ->label('Tipe Kategori')
                     ->options([
-                        'income' => 'Income',
-                        'expense' => 'Expense'
+                        'income' => 'Pemasukan',
+                        'expense' => 'Pengeluaran',
                     ])
                     ->required()
                     ->native(false),
 
                 Select::make('parent_id')
-                    ->label('Parent Category')
+                    ->label('Kategori Induk')
                     ->options(function () {
                         return Category::where('user_id', Auth::id())
                             ->orderBy('name')
                             ->pluck('name', 'id');
                     })
-                    ->placeholder('Select parent category (optional)')
+                    ->placeholder('Pilih kategori induk (opsional)')
                     ->searchable()
                     ->preload()
                     ->nullable(),

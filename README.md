@@ -1,6 +1,6 @@
-# Buku Bisnis
+# ☕ Finansial Kopi Flutter
 
-A modern, enterprise-grade multi-user bookkeeping and financial management system built with **Laravel 12** and **Filament v4**. **Buku Bisnis** provides a comprehensive solution for managing personal or business finances with an intuitive admin interface, robust REST API, and comprehensive testing suite.
+Sistem manajemen keuangan modern khusus untuk bisnis kopi yang dibangun dengan **Laravel 12** dan **Filament v4**. **Finansial Kopi Flutter** menyediakan solusi komprehensif untuk mengelola keuangan bisnis kopi dengan interface admin yang intuitif, REST API yang robust, dan sistem testing yang lengkap.
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.25-red?style=flat-square&logo=laravel)
 ![Filament](https://img.shields.io/badge/Filament-4.0.3-orange?style=flat-square)
@@ -9,91 +9,109 @@ A modern, enterprise-grade multi-user bookkeeping and financial management syste
 ![Tests](https://img.shields.io/badge/Tests-51%20passing-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-## ✨ Features
+## ✨ Fitur Unggulan
 
-### 🏗️ Enterprise Architecture
+### ☕ Khusus Bisnis Kopi
 
--   **Laravel 12**: Latest Laravel framework with modern PHP 8.3.22
--   **Filament v4**: Modern admin panel with Server-Driven UI (SDUI)
--   **Laravel Sanctum**: Secure API authentication
--   **Multi-tenancy**: Complete user data isolation
--   **Enterprise Testing**: 51 passing tests with comprehensive coverage
+-   **Tema Kopi Terintegrasi**: Interface dan branding yang disesuaikan untuk bisnis kopi
+-   **Kategorisasi Khusus**: Template kategori yang relevan untuk coffee shop dan café
+-   **Mata Uang Indonesia**: Format Rupiah dengan pemisah ribuan yang sesuai
+-   **Multi-outlet Support**: Kelola beberapa lokasi coffee shop dalam satu sistem
+-   **Laporan Bisnis Kopi**: Report yang disesuaikan dengan kebutuhan industri kopi
+
+### 🏗️ Arsitektur Enterprise
+
+-   **Laravel 12**: Framework Laravel terbaru dengan PHP 8.3.22
+-   **Filament v4**: Admin panel modern dengan Server-Driven UI (SDUI)
+-   **Laravel Sanctum**: Autentikasi API yang secure
+-   **Multi-tenancy**: Isolasi data user yang lengkap
+-   **Enterprise Testing**: 51 test yang passing dengan coverage komprehensif
 
 ### 📊 Dashboard & Analytics
 
--   **Financial Overview**: Income, expenses, net profit, and total balance cards with clickable navigation
--   **Account Balance Widget**: Real-time overview of all account balances
--   **Interactive Charts**: Visual representation of financial data
--   **Live Updates**: Real-time balance calculations
+-   **Overview Keuangan**: Card pemasukan, pengeluaran, profit bersih, dan total saldo
+-   **Widget Saldo Akun**: Overview real-time dari semua saldo akun
+-   **Chart Interaktif**: Visualisasi data keuangan
+-   **Update Live**: Kalkulasi saldo real-time
 
-### 💰 Account Management
+### 💰 Manajemen Akun
 
--   **Multiple Account Types**: Cash, Bank, E-Wallet, Credit Card, Investment, Loan
--   **Auto-calculated Balances**: Real-time balance updates with transaction history
--   **Multi-user Support**: Complete data isolation between users
--   **Live Formatting**: Auto-formatting for monetary values (Indonesian Rupiah)
--   **Business Rules**: Prevent account deletion when transactions exist
--   **Full REST API**: Complete CRUD operations with validation
+-   **Multiple Tipe Akun**: Tunai, Bank, E-Wallet, dan tipe lainnya
+-   **Auto-calculated Balances**: Update saldo real-time dengan riwayat transaksi
+-   **Multi-user Support**: Isolasi data lengkap antar user
+-   **Live Formatting**: Auto-formatting untuk nilai mata uang (Rupiah Indonesia)
+-   **Business Rules**: Mencegah penghapusan akun saat ada transaksi
+-   **Full REST API**: Operasi CRUD lengkap dengan validasi
 
-### 🏷️ Category Management
+### 🏷️ Manajemen Kategori
 
--   **Hierarchical Structure**: Parent/child category relationships
--   **Income/Expense Types**: Separate categories for different transaction types
--   **User Isolation**: Each user has their own categories
--   **Unique Constraints**: Prevent duplicate categories per user and type
--   **API Integration**: Full REST API with filtering and search capabilities
+-   **Struktur Hierarki**: Hubungan kategori parent/child
+-   **Tipe Pemasukan/Pengeluaran**: Kategori terpisah untuk berbagai tipe transaksi
+-   **User Isolation**: Setiap user memiliki kategori sendiri
+-   **Unique Constraints**: Mencegah duplikasi kategori per user dan tipe
+-   **API Integration**: REST API lengkap dengan filtering dan pencarian
 
-### 📝 Transaction Management
+### 📝 Manajemen Transaksi
 
--   **Dual Entry System**: Income and expense transaction support
--   **File Attachments**: Upload receipts and supporting documents
--   **Rich Metadata**: Notes, descriptions, and categorization
--   **Auto-formatting**: Indonesian Rupiah currency formatting
--   **Real-time Updates**: Instant balance recalculations
--   **Audit Trail**: Complete transaction history tracking
+-   **Filter Tanggal**: Filter transaksi berdasarkan rentang tanggal
+-   **Download Report PDF**: Laporan transaksi dalam format PDF dengan filter tanggal
+-   **Dual Entry System**: Support transaksi pemasukan dan pengeluaran
+-   **File Attachments**: Upload kwitansi dan dokumen pendukung
+-   **Rich Metadata**: Catatan, deskripsi, dan kategorisasi
+-   **Auto-formatting**: Format mata uang Rupiah Indonesia
+-   **Real-time Updates**: Kalkulasi ulang saldo secara instant
+-   **Audit Trail**: Tracking riwayat transaksi lengkap
 
-### 🔐 Security & Authentication
+### 🌐 Interface Bahasa Indonesia
 
--   **Laravel Sanctum**: Production-ready API authentication
--   **User Registration**: Secure user onboarding
--   **Data Isolation**: Users can only access their own data
--   **API Protection**: All endpoints secured with authentication
--   **CSRF Protection**: Cross-site request forgery protection
+-   **UI Bahasa Indonesia**: Seluruh interface menggunakan bahasa Indonesia
+-   **Format Lokal**: Tanggal dan mata uang sesuai standar Indonesia
+-   **Terminologi Bisnis**: Istilah yang familiar untuk pemilik bisnis Indonesia
+-   **Navigation yang Intuitif**: Menu terorganisir secara logis dalam bahasa Indonesia
 
-### 🧪 Production-Ready Testing
+### 🔐 Keamanan & Autentikasi
 
--   **Pest PHP v3**: Modern testing framework with expressive syntax
--   **51 Passing Tests**: Comprehensive test coverage (256 assertions)
--   **Database Isolation**: Separate test database with `_test` suffix
--   **Factory System**: Complete model factories for all entities
--   **API Testing**: Full endpoint coverage with validation testing
--   **Custom Helpers**: Authentication, time management, and assertion helpers
--   **Safe Testing**: `test:fresh` command for isolated test environments
+-   **Laravel Sanctum**: Autentikasi API production-ready
+-   **User Registration**: Onboarding user yang secure
+-   **Data Isolation**: User hanya dapat mengakses data mereka sendiri
+-   **API Protection**: Semua endpoint dilindungi dengan autentikasi
+-   **CSRF Protection**: Perlindungan cross-site request forgery
 
-### 🎨 Modern UI/UX
+### 🧪 Testing Production-Ready
 
--   **Filament v4**: Latest admin interface with modern components
--   **Responsive Design**: Mobile-first approach for all devices
--   **Intuitive Navigation**: Logically grouped menu items
--   **Live Validation**: Real-time form validation and formatting
--   **Alpine.js**: Interactive frontend components
--   **Tailwind CSS**: Modern, utility-first styling
+-   **Pest PHP v3**: Framework testing modern dengan sintaks ekspresif
+-   **51 Passing Tests**: Coverage test komprehensif (256 assertions)
+-   **Database Isolation**: Database test terpisah dengan suffix `_test`
+-   **Factory System**: Model factory lengkap untuk semua entitas
+-   **API Testing**: Coverage endpoint lengkap dengan testing validasi
+-   **Custom Helpers**: Helper autentikasi, manajemen waktu, dan assertion
+-   **Safe Testing**: Perintah `test:fresh` untuk environment test terisolasi
+
+### 🎨 UI/UX Modern
+
+-   **Filament v4**: Interface admin terbaru dengan komponen modern
+-   **Responsive Design**: Pendekatan mobile-first untuk semua device
+-   **Navigasi Intuitif**: Item menu yang dikelompokkan secara logis
+-   **Live Validation**: Validasi form dan formatting real-time
+-   **Alpine.js**: Komponen frontend interaktif
+-   **Tailwind CSS**: Styling modern utility-first
+-   **Coffee Theme**: Tema visual yang konsisten dengan bisnis kopi
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
--   **PHP 8.3.22** or higher
+-   **PHP 8.3.22** atau lebih tinggi
 -   **Composer 2.x**
 -   **Node.js 18+** & NPM
--   **Database**: MySQL 8.0+, PostgreSQL 13+, or SQLite 3.8+
+-   **Database**: MySQL 8.0+, PostgreSQL 13+, atau SQLite 3.8+
 
-### 1-Minute Setup
+### Setup 1 Menit
 
 ```bash
-# Clone and setup
-git clone https://github.com/bahrie127/laravel-bookkeeping-system.git
-cd laravel-bookkeeping-system
+# Clone dan setup
+git clone https://github.com/bahrie127/finansial-kopi-flutter.git
+cd finansial-kopi-flutter
 
 # Install dependencies
 composer install && npm install
@@ -105,19 +123,19 @@ php artisan key:generate
 # Database setup
 php artisan migrate --seed
 
-# Build assets and start
+# Build assets dan start
 npm run build && php artisan serve
 ```
 
-**🎉 Ready!** Visit `http://localhost:8000/admin` to start using the application.
+**🎉 Siap!** Kunjungi `http://localhost:8000/admin` untuk mulai menggunakan aplikasi.
 
-## 📋 Detailed Installation
+## 📋 Instalasi Detail
 
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/bahrie127/laravel-bookkeeping-system.git
-cd laravel-bookkeeping-system
+git clone https://github.com/bahrie127/finansial-kopi-flutter.git
+cd finansial-kopi-flutter
 ```
 
 ### Step 2: Install Dependencies
@@ -130,7 +148,7 @@ composer install
 npm install
 ```
 
-### Step 3: Environment Configuration
+### Step 3: Konfigurasi Environment
 
 ```bash
 # Copy environment file
@@ -139,22 +157,22 @@ cp .env.example .env
 # Generate application key
 php artisan key:generate
 
-# Configure your database in .env file
+# Konfigurasi database di file .env
 # DB_CONNECTION=mysql
 # DB_HOST=127.0.0.1
 # DB_PORT=3306
-# DB_DATABASE=bookkeeping
+# DB_DATABASE=finansial_kopi_flutter
 # DB_USERNAME=your_username
 # DB_PASSWORD=your_password
 ```
 
-### Step 4: Database Setup
+### Step 4: Setup Database
 
 ```bash
-# Run migrations and seeders
+# Run migrations dan seeders
 php artisan migrate --seed
 
-# Or for fresh installation
+# Atau untuk instalasi fresh
 php artisan migrate:fresh --seed
 ```
 
@@ -164,30 +182,30 @@ php artisan migrate:fresh --seed
 # Production build
 npm run build
 
-# Or for development with hot reload
+# Atau untuk development dengan hot reload
 npm run dev
 ```
 
-### Step 6: Start Application
+### Step 6: Start Aplikasi
 
 ```bash
 # Start Laravel development server
 php artisan serve
 
-# Application will be available at:
+# Aplikasi akan tersedia di:
 # http://localhost:8000/admin
 ```
 
-### 🧪 Testing Setup (Optional)
+### 🧪 Setup Testing (Opsional)
 
 ```bash
 # Setup testing environment
 cp .env.testing.example .env.testing
 
-# Run tests to verify setup
+# Run tests untuk verifikasi setup
 ./vendor/bin/pest
 
-# Safe testing with isolated database
+# Safe testing dengan database terisolasi
 php artisan test:fresh
 ./vendor/bin/pest
 php artisan test:fresh --restore
@@ -197,42 +215,42 @@ php artisan test:fresh --restore
 
 ### Backend
 
--   **Laravel 12.25.0** - Modern PHP framework
--   **PHP 8.3.22** - Latest PHP with performance improvements
--   **Laravel Sanctum** - API authentication
--   **MySQL/PostgreSQL/SQLite** - Database support
+-   **Laravel 12.25.0** - Framework PHP modern
+-   **PHP 8.3.22** - PHP terbaru dengan peningkatan performa
+-   **Laravel Sanctum** - Autentikasi API
+-   **MySQL/PostgreSQL/SQLite** - Support database
 
 ### Frontend
 
--   **Filament v4.0.3** - Modern admin panel framework
--   **Livewire v3.6.4** - Full-stack framework for Laravel
--   **Alpine.js** - Minimal framework for reactive behavior
+-   **Filament v4.0.3** - Framework admin panel modern
+-   **Livewire v3.6.4** - Full-stack framework untuk Laravel
+-   **Alpine.js** - Framework minimal untuk reactive behavior
 -   **Tailwind CSS v4.0.0** - Utility-first CSS framework
--   **Vite** - Next generation frontend tooling
+-   **Vite** - Frontend tooling generasi terbaru
 
 ### Testing & Quality
 
--   **Pest PHP v3.8.4** - Modern testing framework
+-   **Pest PHP v3.8.4** - Framework testing modern
 -   **Laravel Pint v1.24.0** - Code style fixer
--   **PHPUnit** - Unit testing foundation
--   **51 Tests** - Comprehensive test coverage (256 assertions)
+-   **PHPUnit** - Foundation unit testing
+-   **51 Tests** - Coverage test komprehensif (256 assertions)
 
 ### Development Tools
 
--   **Laravel Boost** - Development acceleration tools
--   **Laravel Prompts v0.3.6** - Beautiful command-line prompts
--   **Composer** - Dependency management
--   **NPM/Node.js** - Frontend package management
+-   **Laravel Boost** - Tools percepatan development
+-   **Laravel Prompts v0.3.6** - Command-line prompts yang indah
+-   **Composer** - Manajemen dependency
+-   **NPM/Node.js** - Manajemen package frontend
 
-## 📁 Project Structure
+## 📁 Struktur Project
 
 ```
 app/
 ├── Filament/Admin/
 │   ├── Resources/          # Filament resources
-│   │   ├── Accounts/
-│   │   ├── Categories/
-│   │   └── Transactions/
+│   │   ├── Accounts/      # Manajemen akun
+│   │   ├── Categories/    # Manajemen kategori
+│   │   └── Transactions/  # Manajemen transaksi
 │   └── Widgets/           # Dashboard widgets
 ├── Http/
 │   ├── Controllers/Api/   # API controllers
@@ -252,52 +270,120 @@ tests/
 └── Pest.php           # Test configuration & helpers
 
 docs/
-├── testing-setup.md    # Testing environment guide
-└── database-testing.md # Database testing guide
+├── testing-setup.md    # Panduan testing environment
+└── database-testing.md # Panduan database testing
+
+public/
+└── images/
+    ├── logo-kopi-flutter.svg  # Logo aplikasi
+    └── favicon-kopi.svg       # Favicon aplikasi
 ```
 
-## 🔧 Configuration
+## 🔧 Konfigurasi
 
-### Timezone Configuration
+### Konfigurasi Timezone
 
-The application is configured for Indonesian timezone (WIB/Asia/Jakarta). You can modify this in `config/app.php`:
+Aplikasi dikonfigurasi untuk timezone Indonesia (WIB/Asia/Jakarta). Anda dapat memodifikasi di `config/app.php`:
 
 ```php
 'timezone' => 'Asia/Jakarta',
 ```
 
-### Currency Settings
+### Setting Mata Uang
 
-Currently configured for Indonesian Rupiah (IDR). Modify currency settings in the table configurations as needed.
+Saat ini dikonfigurasi untuk Rupiah Indonesia (IDR) dengan format pemisah ribuan titik. Modifikasi setting mata uang di konfigurasi tabel sesuai kebutuhan.
 
-## 🔌 API Reference
+### Branding & Logo
 
-The application provides a comprehensive **REST API** with Laravel Sanctum authentication for programmatic access to all features.
+Branding "Finansial Kopi Flutter" dikonfigurasi di:
 
-### 🔐 Authentication Endpoints
+-   **AdminPanelProvider**: Nama brand dan logo
+-   **Tema Warna**: Palet warna coklat kopi (primary colors)
+-   **Logo SVG**: Logo responsif dengan tema kopi
+-   **Favicon**: Ikon kopi untuk browser tab
 
-```http
-POST   /api/auth/register    # User registration
-POST   /api/auth/login       # User login (returns bearer token)
-GET    /api/auth/me          # Get current authenticated user
-POST   /api/auth/logout      # User logout (invalidate token)
-```
+## 🎯 Target Pengguna
 
-**Authentication:** All API endpoints (except auth) require `Authorization: Bearer {token}` header.
+**Finansial Kopi Flutter** dirancang khusus untuk:
 
-### 💰 Accounts API
+### ☕ Pemilik Coffee Shop
 
-```http
-GET    /api/accounts              # List user accounts
-POST   /api/accounts              # Create new account
-GET    /api/accounts/{id}         # Get specific account
-PUT    /api/accounts/{id}         # Update account
-DELETE /api/accounts/{id}         # Delete account
-```
+-   Warung kopi tradisional yang ingin modernisasi pencatatan keuangan
+-   Coffee shop kecil hingga menengah
+-   Kedai kopi specialty yang butuh tracking detail
 
-**Account Types:** `cash`, `bank`, `e_wallet`, `credit_card`, `investment`, `loan`
+### 🏪 Operator Café Chain
 
-**Query Parameters:**
+-   Jaringan café dengan multiple outlets
+-   Franchise kopi yang butuh standarisasi pencatatan
+-   Coffee shop modern dengan sistem terintegrasi
+
+### 📱 Coffee Entrepreneurs
+
+-   Startup bisnis kopi yang menggunakan teknologi Flutter
+-   Coffee roaster yang perlu manajemen keuangan
+-   Online coffee business yang butuh tracking komprehensif
+
+### 💼 Konsultan Bisnis Kopi
+
+-   Profesional yang mengelola keuangan multiple klien kopi
+-   Akuntan yang spesialisasi industri F&B
+-   Business advisor untuk sektor coffee industry
+
+## 🌟 Keunggulan Kompetitif
+
+### 🎨 Branding Khusus Kopi
+
+-   Logo dan tema visual yang disesuaikan untuk industri kopi
+-   Terminologi dan kategori yang familiar untuk pelaku bisnis kopi
+-   Color scheme coklat kopi yang warm dan professional
+
+### 🇮🇩 Lokalisasi Indonesia
+
+-   Interface 100% bahasa Indonesia
+-   Format mata uang Rupiah dengan pemisah ribuan
+-   Timezone dan format tanggal Indonesia (WIB)
+
+### 📊 Reports Bisnis Kopi
+
+-   Template laporan yang disesuaikan dengan kebutuhan coffee shop
+-   Filter tanggal untuk analisis periode tertentu
+-   Export PDF dengan branding konsisten
+
+### � Teknologi Modern
+
+-   Built dengan Laravel 12 dan Filament v4 terbaru
+-   Responsive design untuk akses mobile dan desktop
+-   API-ready untuk integrasi dengan sistem POS atau aplikasi Flutter
+
+## 🚀 Roadmap Pengembangan
+
+### 🎯 Versi Mendatang
+
+#### v2.0 - Coffee Business Features
+
+-   📦 **Inventory Management**: Stock bahan baku kopi
+-   👥 **Customer Management**: Database pelanggan dan loyalty program
+-   📋 **Menu Management**: Katalog produk dengan harga
+-   📈 **Sales Analytics**: Report penjualan dan profit margin
+
+#### v2.1 - Multi-Outlet Support
+
+-   🏪 **Branch Management**: Kelola multiple lokasi coffee shop
+-   📊 **Consolidated Reports**: Laporan gabungan semua outlet
+-   👨‍💼 **Role Management**: Akses berbeda untuk manager dan staff
+-   🔄 **Data Sync**: Sinkronisasi data antar outlet
+
+#### v2.2 - Integration Ready
+
+-   🔌 **POS Integration**: Koneksi dengan sistem Point of Sale
+-   📱 **Flutter App API**: API lengkap untuk aplikasi mobile Flutter
+-   💳 **Payment Gateway**: Integrasi dengan payment processor
+-   📧 **Email Reports**: Automatic email reporting
+
+### 💡 Fitur Request
+
+Punya ide fitur untuk bisnis kopi Anda? Buat issue di GitHub atau hubungi developer!
 
 -   `q` - Search by account name
 -   `is_active` - Filter by active status (1/0)
@@ -306,9 +392,9 @@ DELETE /api/accounts/{id}         # Delete account
 
 ```json
 {
-    "name": "Main Bank Account",
+    "name": "Kas Utama Coffee Shop",
     "type": "bank",
-    "starting_balance": 1000000.0,
+    "starting_balance": 5000000.0,
     "is_active": true
 }
 ```
@@ -335,9 +421,43 @@ DELETE /api/categories/{id}       # Delete category
 
 ```json
 {
-    "name": "Food & Dining",
+    "name": "Belanja Peralatan Kopi",
     "type": "expense",
     "parent_id": null
+}
+```
+
+### 📝 Transactions API
+
+```http
+GET    /api/transactions         # List user transactions
+POST   /api/transactions         # Create new transaction
+GET    /api/transactions/{id}    # Get specific transaction
+PUT    /api/transactions/{id}    # Update transaction
+DELETE /api/transactions/{id}    # Delete transaction
+```
+
+**Transaction Types:** `income`, `expense`
+
+**Query Parameters:**
+
+-   `q` - Search by transaction note/description
+-   `type` - Filter by type (income/expense)
+-   `account_id` - Filter by account
+-   `category_id` - Filter by category
+-   `date_from` - Filter from date (Y-m-d format)
+-   `date_to` - Filter to date (Y-m-d format)
+
+**Request Body (Create/Update):**
+
+```json
+{
+    "account_id": 1,
+    "category_id": 2,
+    "type": "expense",
+    "amount": 125000.0,
+    "note": "Pembelian biji kopi arabica",
+    "transaction_date": "2024-01-15"
 }
 ```
 
@@ -350,6 +470,7 @@ DELETE /api/categories/{id}       # Delete category
 -   🛡️ **Business Rules**: Enforced (e.g., prevent deletion with dependencies)
 -   🔍 **Filtering & Search**: Query parameters for data filtering
 -   📊 **Structured Responses**: Consistent JSON structure across all endpoints
+-   📅 **Date Range Filtering**: Filter transactions by date range for reports
 
 ### 📄 Response Format
 
@@ -359,10 +480,10 @@ DELETE /api/categories/{id}       # Delete category
 {
     "data": {
         "id": 1,
-        "name": "Main Bank Account",
+        "name": "Kas Utama Coffee Shop",
         "type": "bank",
-        "starting_balance": "1000000.00",
-        "current_balance": "1250000.00",
+        "starting_balance": "5000000.00",
+        "current_balance": "6250000.00",
         "is_active": true,
         "created_at": "2024-01-15T10:30:00.000000Z",
         "updated_at": "2024-01-15T10:30:00.000000Z"
@@ -384,7 +505,7 @@ DELETE /api/categories/{id}       # Delete category
 
 ## 🧪 Testing
 
-**Buku Bisnis** features a **production-ready testing environment** with comprehensive coverage and modern testing practices.
+**Finansial Kopi Flutter** features a **production-ready testing environment** with comprehensive coverage and modern testing practices.
 
 ### 📊 Test Coverage
 
@@ -540,29 +661,29 @@ test('Account API should create account with valid data', function () {
 
 **Account Types:**
 
--   💵 **Cash**: Physical cash on hand
--   🏦 **Bank**: Checking, savings, business accounts
--   📱 **E-Wallet**: Digital wallets (GoPay, OVO, Dana)
--   💳 **Credit Card**: Credit card accounts
--   📈 **Investment**: Stocks, bonds, mutual funds
--   💸 **Loan**: Mortgages, personal loans
+-   💵 **Cash**: Uang tunai di kasir atau brankas
+-   🏦 **Bank**: Rekening giro, tabungan, rekening bisnis
+-   📱 **E-Wallet**: Dompet digital (GoPay, OVO, Dana, ShopeePay)
+-   💳 **Credit Card**: Kartu kredit untuk pembelian bisnis
+-   📈 **Investment**: Saham, obligasi, reksadana
+-   💸 **Loan**: Pinjaman usaha, KUR, modal investasi
 
 ### 🏷️ Category System
 
 **Creating Categories:**
 
--   **Income Categories**: Salary, Business, Investments, Gifts
--   **Expense Categories**: Food, Transportation, Housing, Entertainment
+-   **Income Categories**: Penjualan kopi, Layanan catering, Konsultasi barista, Hadiah
+-   **Expense Categories**: Bahan baku kopi, Peralatan, Sewa tempat, Marketing
 -   **Hierarchical Structure**: Create parent categories with sub-categories
 -   **User-Specific**: Each user maintains their own category system
 
 **Parent-Child Example:**
 
 ```
-📂 Transportation (Parent)
-   ├── 🚗 Car Maintenance
-   ├── ⛽ Fuel
-   └── 🚌 Public Transport
+📂 Bahan Baku (Parent)
+   ├── ☕ Biji Kopi
+   ├── 🥛 Susu & Krimer
+   └── 🍯 Sirup & Topping
 ```
 
 ### 📝 Transaction Workflow
@@ -573,11 +694,13 @@ test('Account API should create account with valid data', function () {
     - Enter amount (auto-formatted to IDR)
     - Add description and notes
     - Upload receipts/attachments
+    - Filter by date range for reporting
 
 2. **Real-time Updates**
     - Account balances update instantly
     - Dashboard reflects changes immediately
     - Transaction history maintained
+    - PDF reports with date filtering
 
 ### 🔌 API Integration
 
@@ -603,13 +726,16 @@ GET /api/accounts
 # Create new account
 POST /api/accounts
 {
-  "name": "Savings Account",
+  "name": "Akun Tabungan Kopi",
   "type": "bank",
   "starting_balance": 5000000.00
 }
 
 # Filter categories by type
-GET /api/categories?type=expense&q=food
+GET /api/categories?type=expense&q=bahan
+
+# Get transactions with date filter
+GET /api/transactions?date_from=2024-01-01&date_to=2024-01-31
 ```
 
 ### 🧪 Development & Testing
@@ -655,15 +781,15 @@ php artisan tinker              # Interactive PHP console
 
 **Data Export:**
 
--   Transaction history export
--   Account balance reports
--   Category-wise spending analysis
+-   Transaction history export dengan filter tanggal
+-   Account balance reports untuk analisis keuangan
+-   Category-wise spending analysis untuk optimasi biaya
 
 **Search & Filtering:**
 
 -   Powerful search across all resources
--   Multi-criteria filtering
--   Date range selections
+-   Multi-criteria filtering untuk transaksi
+-   Date range selections untuk laporan periodik
 
 ### 🛠️ Customization
 
@@ -682,14 +808,14 @@ php artisan tinker              # Interactive PHP console
 
 ## 🤝 Contributing
 
-We welcome contributions! **Buku Bisnis** is built to be extensible and maintainable. Here's how you can contribute:
+We welcome contributions! **Finansial Kopi Flutter** is built to be extensible and maintainable. Here's how you can contribute:
 
 ### 🔧 Development Setup
 
 ```bash
 # Fork and clone the repository
-git clone https://github.com/your-username/laravel-bookkeeping-system.git
-cd laravel-bookkeeping-system
+git clone https://github.com/your-username/finansial-kopi-flutter.git
+cd finansial-kopi-flutter
 
 # Install dependencies
 composer install && npm install
@@ -801,42 +927,44 @@ We love new ideas! **Feature requests should include:**
 -   📖 **Wiki**: Community-driven documentation
 -   🎥 **YouTube**: [@codewithbahri](https://youtube.com/@codewithbahri) for tutorials
 
-## ‍💻 About the Developer
+## ‍💻 Tentang Developer
 
 **Bahri** - Full Stack Developer & Programming Instructor
 
-I'm passionate about building useful applications and sharing knowledge with the developer community. **Buku Bisnis** showcases modern Laravel and Filament capabilities while solving real-world financial management needs with enterprise-grade code quality.
+Saya passionate dalam membangun aplikasi yang berguna dan sharing knowledge dengan komunitas developer. **Finansial Kopi Flutter** menunjukkan kemampuan Laravel dan Filament modern sambil menyelesaikan kebutuhan manajemen keuangan bisnis kopi dengan kualitas kode enterprise-grade.
 
-### 🌐 Connect with Me
+### 🌐 Connect dengan Saya
 
 -   **GitHub**: [github.com/bahrie127](https://github.com/bahrie127) - Open source projects
 -   **LinkedIn**: [linkedin.com/in/bahrie](https://linkedin.com/in/bahrie) - Professional network
 -   **YouTube**: [@codewithbahri](https://youtube.com/@codewithbahri) - Laravel tutorials & tips
 -   **Instagram**: [@codewithbahri](https://instagram.com/codewithbahri) - Development journey
 -   **WhatsApp Channel**: [Programming Tips & Tutorials](https://whatsapp.com/channel/0029Vb0ucRx7oQhVmCVypC1Y)
--   **WhatsApp**: [+62 856-4089-9224](https://wa.me/6285640899224) - Direct contact
+-   **WhatsApp**: [+62 856-4089-9224](https://wa.me/6285640899224) - Contact langsung
 
-### 🎯 Project Goals
+### 🎯 Tujuan Project
 
-**Buku Bisnis** was created to demonstrate:
+**Finansial Kopi Flutter** dibuat untuk mendemonstrasikan:
 
--   ✅ **Modern Laravel 12** features and best practices
+-   ✅ **Laravel 12 Modern** features dan best practices
 -   ✅ **Filament v4** server-driven UI capabilities
--   ✅ **Enterprise-grade Testing** with Pest PHP
--   ✅ **Production-ready Architecture** with proper separation of concerns
--   ✅ **Comprehensive API Design** with Laravel Sanctum
--   ✅ **Real-world Application** solving actual business problems
+-   ✅ **Enterprise-grade Testing** dengan Pest PHP
+-   ✅ **Production-ready Architecture** dengan proper separation of concerns
+-   ✅ **Comprehensive API Design** dengan Laravel Sanctum
+-   ✅ **Real-world Application** yang menyelesaikan masalah bisnis nyata
+-   ✅ **Indonesian Localization** untuk market lokal
+-   ✅ **Industry-Specific Solutions** untuk bisnis kopi
 
-### 💝 Support the Project
+### 💝 Support Project
 
-If this project helps you or your business:
+Jika project ini membantu Anda atau bisnis Anda:
 
--   ⭐ **Star the repository** on GitHub
--   🐛 **Report bugs** and suggest improvements
--   💡 **Contribute features** through pull requests
--   📖 **Improve documentation** and guides
--   🔗 **Share with others** who might benefit
--   📢 **Follow my content** for more Laravel tutorials
+-   ⭐ **Star repository** di GitHub
+-   🐛 **Report bugs** dan suggest improvements
+-   💡 **Contribute features** melalui pull requests
+-   📖 **Improve documentation** dan guides
+-   🔗 **Share dengan others** yang mungkin terbantu
+-   📢 **Follow content saya** untuk Laravel tutorials lebih banyak
 
 ### 📚 Learning Resources
 
@@ -844,23 +972,32 @@ If this project helps you or your business:
 
 -   🎥 **YouTube Channel**: [@codewithbahri](https://youtube.com/@codewithbahri)
 -   📱 **WhatsApp Channel**: [Programming Tips](https://whatsapp.com/channel/0029Vb0ucRx7oQhVmCVypC1Y)
--   📝 **Articles & Tutorials**: Available on my social media
--   💻 **Open Source Projects**: Check my GitHub repositories
+-   📝 **Articles & Tutorials**: Available di social media saya
+-   💻 **Open Source Projects**: Check GitHub repositories saya
 
-**Topics Covered:**
+**Topics yang Dicover:**
 
--   Laravel 12 features and updates
+-   Laravel 12 features dan updates
 -   Filament v4 development
--   API development with Laravel Sanctum
+-   API development dengan Laravel Sanctum
 -   Modern PHP 8.3 practices
--   Testing with Pest PHP
--   Database design and optimization
+-   Testing dengan Pest PHP
+-   Database design dan optimization
+-   Indonesian localization techniques
+-   Coffee shop business solutions
+
+### ☕ Khusus Komunitas Bisnis Kopi
+
+-   🎓 **Workshop**: Laravel untuk coffee shop owners
+-   📊 **Business Consulting**: Setup sistem keuangan coffee shop
+-   🔧 **Custom Development**: Fitur khusus sesuai kebutuhan bisnis Anda
+-   📱 **Flutter Integration**: Pengembangan mobile app terintegrasi
 
 ---
 
 ## 📄 License
 
-This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Project ini adalah open-source software dengan lisensi [MIT license](https://opensource.org/licenses/MIT).
 
 ```
 MIT License
@@ -888,6 +1025,18 @@ SOFTWARE.
 
 ---
 
-**Made with ❤️ by [Bahri](https://github.com/bahrie127)**
+**Made with ❤️ and ☕ by [Bahri](https://github.com/bahrie127)**
 
-_Building the future of web development, one Laravel application at a time._ 🚀
+_Membangun masa depan web development, satu aplikasi Laravel untuk bisnis kopi pada satu waktu._ 🚀☕
+
+### 🎉 Terima Kasih
+
+Special thanks kepada:
+
+-   ☕ **Coffee shop owners** yang memberikan insight bisnis
+-   👥 **Laravel community** Indonesia
+-   🛠️ **Filament team** untuk framework yang amazing
+-   🧪 **Pest PHP team** untuk testing framework yang elegant
+-   🇮🇩 **Indonesian developers** yang selalu support
+
+Mari bersama-sama memajukan industri kopi Indonesia dengan teknologi! ☕🇮🇩🚀

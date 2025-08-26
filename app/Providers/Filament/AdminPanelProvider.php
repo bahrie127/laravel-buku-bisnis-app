@@ -9,9 +9,6 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
-use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -27,12 +24,24 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->brandName('Buku Bisnis')
-            ->brandLogo(asset('images/logo.svg'))
-            ->brandLogoHeight('2rem')
-            ->favicon(asset('favicon.ico'))
+            ->brandName('Finansial Kopi Flutter')
+            ->brandLogo(asset('images/logo-kopi-flutter.svg'))
+            ->brandLogoHeight('2.5rem')
+            ->favicon(asset('favicon-kopi.svg'))
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => [
+                    50 => '#fdf7f0',
+                    100 => '#fdeee1',
+                    200 => '#fad9c2',
+                    300 => '#f5ba94',
+                    400 => '#ee9364',
+                    500 => '#e87441',
+                    600 => '#d85d30',
+                    700 => '#b44a29',
+                    800 => '#8f3d28',
+                    900 => '#743323',
+                    950 => '#3f1811',
+                ],
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')

@@ -18,45 +18,45 @@ class AccountsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Account Name')
+                    ->label('Nama Akun')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('type')
-                    ->label('Type')
+                    ->label('Tipe')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'cash' => 'success',
                         'bank' => 'info',
                         'ewallet' => 'warning',
                         'other' => 'gray',
                     })
-                    ->formatStateUsing(fn(string $state): string => match ($state) {
-                        'cash' => 'Cash',
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'cash' => 'Tunai',
                         'bank' => 'Bank',
                         'ewallet' => 'E-Wallet',
-                        'other' => 'Other',
+                        'other' => 'Lainnya',
                     }),
 
                 TextColumn::make('starting_balance')
-                    ->label('Starting Balance')
+                    ->label('Saldo Awal')
                     ->money('IDR')
                     ->sortable(),
 
                 TextColumn::make('current_balance')
-                    ->label('Current Balance')
-                    ->getStateUsing(fn($record) => $record->getCurrentBalance())
+                    ->label('Saldo Saat Ini')
+                    ->getStateUsing(fn ($record) => $record->getCurrentBalance())
                     ->money('IDR')
-                    ->color(fn($state) => $state >= 0 ? 'success' : 'danger'),
+                    ->color(fn ($state) => $state >= 0 ? 'success' : 'danger'),
 
                 IconColumn::make('is_active')
-                    ->label('Active')
+                    ->label('Aktif')
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
 
                 TextColumn::make('created_at')
-                    ->label('Created')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -64,17 +64,17 @@ class AccountsTable
             ->filters([
                 SelectFilter::make('type')
                     ->options([
-                        'cash' => 'Cash',
+                        'cash' => 'Tunai',
                         'bank' => 'Bank',
                         'ewallet' => 'E-Wallet',
-                        'other' => 'Other',
+                        'other' => 'Lainnya',
                     ]),
 
                 SelectFilter::make('is_active')
                     ->label('Status')
                     ->options([
-                        1 => 'Active',
-                        0 => 'Inactive',
+                        1 => 'Aktif',
+                        0 => 'Tidak Aktif',
                     ]),
             ])
             ->recordActions([

@@ -685,9 +685,9 @@ describe('Transaction API Statistics', function () {
                     'expense_count',
                 ],
             ])
-            ->assertJsonPath('data.total_income', 1000.00)
-            ->assertJsonPath('data.total_expense', 500.00)
-            ->assertJsonPath('data.net_amount', 500.00)
+            ->assertJsonPath('data.total_income', '1000.00')
+            ->assertJsonPath('data.total_expense', '500.00')
+            ->assertJsonPath('data.net_amount', '500.00')
             ->assertJsonPath('data.transaction_count', 3)
             ->assertJsonPath('data.income_count', 1)
             ->assertJsonPath('data.expense_count', 2);
@@ -717,7 +717,7 @@ describe('Transaction API Statistics', function () {
         actingAsApi($user)
             ->getJson('/api/transactions-statistics?from_date=2024-05-01&to_date=2024-12-31')
             ->assertStatus(200)
-            ->assertJsonPath('data.total_expense', 200.00)
+            ->assertJsonPath('data.total_expense', '200.00')
             ->assertJsonPath('data.transaction_count', 1);
     });
 });
